@@ -8,6 +8,9 @@ RUN sed -i -e "s/'use strict';.*/'use strict';\nObject.defineProperty(global, '_
 # Actual image
 FROM node:8-slim
 
+LABEL maintainer="boomfly@rambler.ru"
+LABEL description="bitcore@4.1.1 image"
+
 RUN apt-get update && apt-get install -y libzmq3-dev
 
 COPY --from=builder /node_modules /node_modules
