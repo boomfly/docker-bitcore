@@ -4,7 +4,7 @@ RUN apt-get update && apt-get install -y curl build-essential libzmq3-dev python
 
 RUN npm init -y && npm i bitcore
 RUN sed -i -e "s/'use strict';.*/'use strict';\nObject.defineProperty(global, '_bitcore', { get(){ return undefined }, set(){} });/g" ./node_modules/bitcore/bin/bitcored
-RUN sed -i -e "s/var pageLength = 10.*/var pageLength = 100/g" ./node_modules/insight-api/lib/transactions.js
+RUN sed -i -e "s/var pageLength = 10.*/var pageLength = 500;/g" ./node_modules/insight-api/lib/transactions.js
 
 # Actual image
 FROM node:8-slim
